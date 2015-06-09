@@ -37,6 +37,8 @@ import java.util.regex.Pattern;
  */
 public final class DataQuery {
 
+    private static final DataQuery EMPTY = new DataQuery();
+
     /**
      * The parts that make up this query.
      */
@@ -75,6 +77,16 @@ public final class DataQuery {
     }
 
     /**
+     * Gets an empty {@link DataQuery}. This query performs exactly the same
+     * when used in all aspects as
+     *
+     * @return An empty data query
+     */
+    public static DataQuery of() {
+        return DataQuery.EMPTY;
+    }
+
+    /**
      * Constructs a query using the given separator character and path.
      *
      * <p>As an example, {@code new DataQuery('/', "a/b/c")} and
@@ -96,6 +108,9 @@ public final class DataQuery {
      * @return The newly constructed {@link DataQuery}
      */
     public static DataQuery of(String... parts) {
+        if (parts.length == 0) {
+            return DataQuery.EMPTY;
+        }
         return new DataQuery(parts);
     }
 
@@ -106,6 +121,9 @@ public final class DataQuery {
      * @return The newly constructed {@link DataQuery}
      */
     public static DataQuery of(List<String> parts) {
+        if (parts.isEmpty()) {
+            return DataQuery.EMPTY;
+        }
         return new DataQuery(parts);
     }
 

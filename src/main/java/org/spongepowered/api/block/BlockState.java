@@ -24,8 +24,8 @@
  */
 package org.spongepowered.api.block;
 
-import org.spongepowered.api.data.DataManipulator;
 import org.spongepowered.api.data.ImmutableDataHolder;
+import org.spongepowered.api.data.manipulator.DataManipulator;
 
 /**
  * Represents a block using {@link BlockType} and a list of
